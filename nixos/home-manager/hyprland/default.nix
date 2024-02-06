@@ -16,11 +16,13 @@ in
     wl-clipboard
     polkit_gnome
     libsForQt5.polkit-kde-agent
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
     hyprland-protocols
     hyprlang
     libdrm
     pipewire
-    wireplunmber
+    wireplumber
     sdbus-cpp
     wayland-protocols
     xdg-desktop-portal-hyprland
@@ -30,10 +32,8 @@ in
     brillo
     watchexec
     pavucontrol
-    qt5-wayland
-    qt6-wayland
     mako
-    swaync
+    swaynotificationcenter
     bibata-cursors
     adw-gtk3
   ];

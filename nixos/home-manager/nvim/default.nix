@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    yaml-language-server
+    haskell-language-server
+  ];
 
   home.file.".config/nvim" = {
     source = pkgs.fetchFromGitHub {

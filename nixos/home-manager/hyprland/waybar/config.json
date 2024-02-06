@@ -1,7 +1,7 @@
 {
     "position": "top",
     "height": 26,
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["hyprland/workspaces", "sway/mode"],
     "modules-right": ["tray", "keyboard-state", "idle_inhibitor", "pulseaudio", "network", "disk", "cpu", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true
