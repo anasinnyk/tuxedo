@@ -2,16 +2,21 @@
 {
   home.packages = with pkgs; [
     go
-    rustup
+    gcc_multi
+    zig
+    rustc
+    cargo
     nodejs_21
     python312
-    haskell.compiler.ghc96
+    haskell.compiler.ghc94
     cabal-install
     terraform
     terraform-ls
+    nil
     yaml-language-server
     haskell-language-server
     haskellPackages.lsp
+    haskellPackages.haskell-debug-adapter
   ];
 
   home.file.".config/nvim" = {

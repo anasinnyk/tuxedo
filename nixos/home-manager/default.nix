@@ -21,8 +21,7 @@
       eza
       bat
       btop
-      gcc_multi
-      zig
+      blueman
       zoom-us
       youtube-music
       slack
@@ -32,6 +31,7 @@
       vlc
       httpie
       whois
+      discord
       telegram-desktop
       signal-desktop
       neofetch

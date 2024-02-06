@@ -7,8 +7,7 @@
     "custom/music"
   ],
   "modules-center": [
-    "hyprland/window",
-    "hyprland/mode"
+    "hyprland/window"
   ],
   "modules-right": [
     "idle_inhibitor",
@@ -23,7 +22,7 @@
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "format": "❰<span color=\"#ebdbb2\"> {name} </span>❱",
+    "format": "<span color=\"#ebdbb2\">{name}</span>",
     "format-icons": {
       "1:web": "www",
       "2:code": "",
@@ -43,15 +42,12 @@
       "deactivated": ""
     }
   },
-  "hyprland/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
   "tray": {
     "icon-size": 14,
     "spacing": 10
   },
   "clock": {
-    "format": "{:%A, %B %d at %I:%M %p}",
+    "format": "{:%A, %d/%m at %I:%M %p}",
     "format-alt": "{:%Y-%m-%d - %H:%M}"
   },
   "cpu": {
