@@ -1,0 +1,83 @@
+{
+    "position": "top",
+    "height": 26,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-right": ["tray", "keyboard-state", "idle_inhibitor", "pulseaudio", "network", "disk", "cpu", "battery", "clock"],
+    "sway/workspaces": {
+        "disable-scroll": true
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 12
+    },
+    "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": "<big>⇪</big>",
+            "unlocked": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "clock": {
+        "format": " {:%I:%M}",
+        "format-alt": " {:%a., %b. %d}",
+        "tooltip-format": "<big> {:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "disk": {
+        "format": " {free}"
+    },
+    "cpu": {
+        "format": " {load}",
+        "tooltip": true
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-linked": " (No IP)",
+        "format-disconnected": " Disconnected",
+        "format-alt": " {ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": " {essid} ({signalStrength} dBm)",
+        "tooltip-format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-linked": " {ifname} (No IP)",
+        "tooltip-format-disconnected": " Disconnected",
+        "tooltip-format-alt": " {ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%   {format_source}",
+        "format-bluetooth": "{icon} {volume}%   {format_source}",
+        "format-bluetooth-muted": "{icon}   {format_source}",
+        "format-muted": "   {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}
+
