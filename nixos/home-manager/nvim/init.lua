@@ -1,5 +1,5 @@
 return {
-  # colorscheme = "astrolight",
+  -- colorscheme = "astrolight",
   lsp = {
     config = {
       yamlls = {

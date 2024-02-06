@@ -71,6 +71,8 @@ in
     style = ./waybar/style.css;
   };
 
+  home.file.".config/mediaplayer.sh".source = ./waybar/mediaplayer.sh;
+
   home.file.".config/wallpaper.jpg".source = ./wallpaper.jpg;
 
   wayland.windowManager.hyprland = {
