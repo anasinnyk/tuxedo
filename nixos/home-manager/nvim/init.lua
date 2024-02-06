@@ -1,5 +1,5 @@
 return {
-  colorscheme = "astrolight",
+  # colorscheme = "astrolight",
   lsp = {
     config = {
       yamlls = {
@@ -25,6 +25,7 @@ return {
   },
   plugins = {
     "AstroNvim/astrocommunity",
+    { import = "astrocommunity.colorscheme.gruvbox-nvim" },
     { import = "astrocommunity.pack.rust" },
     { import = "astrocommunity.pack.go" },
     { import = "astrocommunity.pack.haskell" },

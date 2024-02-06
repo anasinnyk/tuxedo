@@ -1,8 +1,17 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    go
+    rustup
+    nodejs_21
+    python312
+    haskell.compiler.ghc96
+    cabal-install
+    terraform
+    terraform-ls
     yaml-language-server
     haskell-language-server
+    haskellPackages.lsp
   ];
 
   home.file.".config/nvim" = {

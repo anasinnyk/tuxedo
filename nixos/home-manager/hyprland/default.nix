@@ -12,7 +12,6 @@ in
     swww
     playerctl
     pamixer
-    wofi
     wl-clipboard
     polkit_gnome
     libsForQt5.polkit-kde-agent
@@ -55,6 +54,15 @@ in
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = "*";
+  };
+
+  programs.wofi = {
+    enable = true;
+    settings = {
+      mode = "drun";
+      allow_images = true;
+    };
+    style = builtins.readFile ./wofi/style.css;
   };
 
   programs.waybar = {
