@@ -28,6 +28,7 @@ return {
     { import = "astrocommunity.colorscheme.gruvbox-nvim" },
     { import = "astrocommunity.pack.rust" },
     { import = "astrocommunity.pack.go" },
+    { import = "astrocommunity.pack.nix" },
     { import = "astrocommunity.pack.haskell" },
     { import = "astrocommunity.pack.python" },
     { import = "astrocommunity.pack.yaml" },

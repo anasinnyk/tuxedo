@@ -51,9 +51,7 @@
     "spacing": 10
   },
   "clock": {
-    // Human Friendly
     "format": "{:%A, %B %d at %I:%M %p}",
-    // 24hr Robot Friendly
     "format-alt": "{:%Y-%m-%d - %H:%M}"
   },
   "cpu": {
@@ -65,13 +63,11 @@
     "format": "{used:0.1f}/{total:0.1f}G "
   },
   "network": {
-    // "interface": "wlp2s0", // (Optional) To force the use of this interface
     "format-wifi": "{essid} ({signalStrength}%) ",
     "format-ethernet": "{ifname}: {ipaddr} ",
     "format-disconnected": "Disconnected ⚠"
   },
   "pulseaudio": {
-    //"scroll-step": 1,
     "format": "{volume}% {icon}",
     "format-bluetooth": "{volume}% {icon}",
     "format-muted": "",
@@ -92,8 +88,8 @@
   "custom/music": {
     "format": "  {}",
     "max-length": 60,
-    "interval": 5, // Remove this if your script is endless and write in loop
-    "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
+    "interval": 5,
+    "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null",
     "tooltip": false,
     "on-click": "playerctl play-pause",
     "on-scroll-up": "playerctl previous",
