@@ -15,6 +15,8 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
+
     sddm-sugar-candy-nix = {
       url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,17 +24,9 @@
 
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, flatpaks, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
-    };
-
   in
   {
     nixosConfigurations = {
@@ -42,11 +36,23 @@
         modules = [
           ./nixos/system/hardware-configuration.nix
           ./nixos/system/configuration.nix
-          ./nixos/users/nas1k.nix
-          ./nixos/sddm
-          ./nixos/home-manager
+          ./nixos/system/users/nas1k.nix
+          inputs.sddm-sugar-candy-nix.nixosModules.default
+          ./nixos/system/sddm
         ];
       };
+    };
+    homeConfigurations.nas1k = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = [
+        flatpaks.homeManagerModules.default
+        ./nixos/home-manager
+        ./nixos/home-manager/git
+        ./nixos/home-manager/terminal
+        ./nixos/home-manager/hyprland
+        ./nixos/home-manager/kube
+        ./nixos/home-manager/nvim
+      ];
     };
   };
 }

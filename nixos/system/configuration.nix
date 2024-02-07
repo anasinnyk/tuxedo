@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -19,6 +19,7 @@
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true;
   services.xserver.displayManager.sddm.wayland.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -48,6 +49,7 @@
   environment.systemPackages = with pkgs; [
     git
     vim
+    home-manager
   ];
 
   system.stateVersion = "23.11";

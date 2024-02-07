@@ -3,6 +3,8 @@ let
   gruvbox = import ./gruvbox-plus.nix { inherit pkgs; };
 in
 {
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     dunst
     eww-wayland
@@ -45,6 +47,10 @@ in
   gtk.theme.name = "adw-gtk3";
   gtk.iconTheme.package = gruvbox;
   gtk.iconTheme.name = "GruvboxPlus";
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
 
   xdg.enable = true;
 

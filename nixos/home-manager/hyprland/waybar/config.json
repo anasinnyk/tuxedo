@@ -22,7 +22,7 @@
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "format": "<span color=\"#ebdbb2\">{name}</span>",
+    "format": "<span color=\"#ebdbb2\">{icon}</span>",
     "format-icons": {
       "focused": "",
       "default": ""
@@ -44,7 +44,7 @@
     "format-alt": "{:%Y-%m-%d - %H:%M}"
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": "{usage}% ",
     "on-click": "wezterm -e btop"
   },
   "memory": {

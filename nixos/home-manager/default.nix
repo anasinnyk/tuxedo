@@ -1,26 +1,8 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+    nixpkgs.config.allowUnfree = true;
 
-  fonts.packages = with pkgs; [
-    nerdfonts
-    font-awesome
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
-  ];
-  
-  home-manager.useGlobalPkgs = true;
-  home-manager.users.nas1k = {
     home.username = "nas1k";
     home.homeDirectory = "/home/nas1k";
 
@@ -50,16 +32,4 @@
       signal-desktop
       neofetch
     ];
-
-    programs.home-manager.enable = true;
-
-    imports = [
-      ./git
-      ./terminal
-      ./hyprland
-      ./kube
-      ./nvim
-    ];
-  };
-
 }
