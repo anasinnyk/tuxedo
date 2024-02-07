@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos";
@@ -14,6 +14,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
   programs.xwayland.enable = true;
 
   programs.hyprland.enable = true;

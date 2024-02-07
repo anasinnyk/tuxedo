@@ -1,5 +1,6 @@
 { lib, ... }:
 {
+  services.xserver.displayManager.defaultSession = "hyprland";
   services.xserver.displayManager.sddm.sugarCandyNix = {
     enable = true;
 
@@ -9,7 +10,7 @@
       FormPosition = "left";
       Font = "JetBrains Mono";
       HeaderText = "welcome /home";
-      AccentColor = "#b8bb26;";
+      AccentColor = "#b8bb26";
     };
   };
 }

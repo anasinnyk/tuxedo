@@ -1,11 +1,23 @@
 { pkgs, ... }:
 let
-  gruvbox = import ./gruvbox-plus.nix { inherit pkgs; };
+  gruvbox = import ./pkgs/gruvbox-plus.nix { inherit pkgs; };
 in
 {
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    inconsolata-nerdfont
+    jetbrains-mono
+    nerdfonts
+    font-awesome
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
     dunst
     eww-wayland
     waybar
@@ -18,13 +30,14 @@ in
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     hyprland-protocols
-    hyprlang
+    hyprland
     libdrm
     pipewire
     wireplumber
     sdbus-cpp
     wayland-protocols
     xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
     wirelesstools
     pulseaudio
     upower
@@ -47,17 +60,16 @@ in
   gtk.theme.name = "adw-gtk3";
   gtk.iconTheme.package = gruvbox;
   gtk.iconTheme.name = "GruvboxPlus";
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
+  gtk.gtk3.extraCss = builtins.readFile ./gtk.css;
+  gtk.gtk4.extraCss = builtins.readFile ./gtk.css;
 
   xdg.enable = true;
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "*";
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
+    config.common.default = "gtk";
+    config.hyprland.default = [ "hyprland" "gtk" ];
   };
 
   programs.wofi = {

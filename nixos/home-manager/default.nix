@@ -9,6 +9,7 @@
     home.stateVersion = "24.05";
 
     home.packages = with pkgs; [
+      sioyek
       firefox
       hello
       fzf

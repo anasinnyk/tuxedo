@@ -9,7 +9,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland/v0.35.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    darkmatter-grub-theme = {
+      url = "gitlab:VandalByte/darkmatter-grub-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+     
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -24,7 +34,7 @@
 
   };
 
-  outputs = { self, nixpkgs, flatpaks, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, flatpaks, darkmatter-grub-theme, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
   in
@@ -39,6 +49,8 @@
           ./nixos/system/users/nas1k.nix
           inputs.sddm-sugar-candy-nix.nixosModules.default
           ./nixos/system/sddm
+          inputs.darkmatter-grub-theme.nixosModule
+          ./nixos/system/grub
         ];
       };
     };
