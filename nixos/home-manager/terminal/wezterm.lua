@@ -6,5 +6,5 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.text_background_opacity = 1.0
 config.window_background_opacity = 0.97
-config.color_scheme = "GruveboxLight"
+config.color_scheme = "GruvboxDark"
 return config

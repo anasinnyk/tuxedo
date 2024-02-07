@@ -1,9 +1,24 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  fonts.packages = with pkgs; [
+    nerdfonts
+    font-awesome
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+  ];
+  
   home-manager.useGlobalPkgs = true;
   home-manager.users.nas1k = {
     home.username = "nas1k";
@@ -21,7 +36,6 @@
       eza
       bat
       btop
-      blueman
       zoom-us
       youtube-music
       slack

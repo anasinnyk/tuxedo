@@ -4,8 +4,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    nerdfonts
-    font-awesome
     dunst
     eww-wayland
     waybar
@@ -71,7 +69,10 @@ in
     style = ./waybar/style.css;
   };
 
-  home.file.".config/mediaplayer.sh".source = ./waybar/mediaplayer.sh;
+  home.file.".config/waybar/mediaplayer.sh" = {
+    source = ./waybar/mediaplayer.sh;
+    executable = true;
+  };
 
   home.file.".config/wallpaper.jpg".source = ./wallpaper.jpg;
 

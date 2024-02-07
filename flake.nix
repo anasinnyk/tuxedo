@@ -40,11 +40,11 @@
         specialArgs = { inherit inputs system; };
 
         modules = [
-	  ./nixos/system/hardware-configuration.nix
+          ./nixos/system/hardware-configuration.nix
           ./nixos/system/configuration.nix
-	  ./nixos/users/nas1k.nix
-	  ./nixos/sddm
-	  ./nixos/home-manager
+          ./nixos/users/nas1k.nix
+          ./nixos/sddm
+          ./nixos/home-manager
         ];
       };
     };

@@ -24,13 +24,6 @@
     "all-outputs": true,
     "format": "<span color=\"#ebdbb2\">{name}</span>",
     "format-icons": {
-      "1:web": "www",
-      "2:code": "",
-      "3:term": "",
-      "4:work": "",
-      "5:music": "",
-      "6:docs": "",
-      "urgent": "",
       "focused": "",
       "default": ""
     }
@@ -47,12 +40,12 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{:%A, %d/%m at %I:%M %p}",
+    "format": "{:%a, %e %b at %I:%M %p}",
     "format-alt": "{:%Y-%m-%d - %H:%M}"
   },
   "cpu": {
     "format": "{usage}% ",
-    "on-click": "alacritty -t 'Floating Terminal' -e htop"
+    "on-click": "wezterm -e btop"
   },
   "memory": {
     "interval": 30,
