@@ -24,6 +24,12 @@ in
     swww
     playerctl
     pamixer
+    swaylock
+    grimblast
+    grim
+    slurp
+    swappy
+    wlogout
     wl-clipboard
     polkit_gnome
     libsForQt5.polkit-kde-agent
@@ -56,20 +62,34 @@ in
     ".icons/bibata".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
   };
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
-  gtk.theme.package = pkgs.adw-gtk3;
-  gtk.theme.name = "adw-gtk3";
-  gtk.iconTheme.package = gruvbox;
-  gtk.iconTheme.name = "GruvboxPlus";
-  gtk.gtk3.extraCss = builtins.readFile ./gtk.css;
-  gtk.gtk4.extraCss = builtins.readFile ./gtk.css;
+  # gtk.theme.package = pkgs.adw-gtk3;
+  home.sessionVariables = {
+    GTK_THEME = "Adwaita:dark";
+  };
+  gtk.theme.name = "Adwaita:dark";
+  home.file.".local/share/icons" = {
+    source = gruvbox;
+    recursive = true;
+  };
+  home.file.".config/gtk-3.0/gtk.css".source = ./pkgs/gtk-3.0/gtk.css;
+  home.file.".config/gtk-3.0/gtk-dark.css".source = ./pkgs/gtk-3.0/gtk-dark.css;
+  home.file.".config/gtk-4.0/gtk.css".source = ./pkgs/gtk-4.0/gtk.css;
+  home.file.".config/gtk-4.0/gtk-dark.css".source = ./pkgs/gtk-4.0/gtk-dark.css;
+  gtk.iconTheme.name = "Gruvbox-Plus-Dark";
+  gtk.gtk3.extraConfig = {
+    gtk-application-prefer-dark-theme = true;
+  };
+  gtk.gtk4.extraConfig = {
+    gtk-application-prefer-dark-theme = true;
+  };
 
   xdg.enable = true;
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
-    config.common.default = "gtk";
-    config.hyprland.default = [ "hyprland" "gtk" ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
+    config.common.default = "gnome";
+    config.hyprland.default = [ "hyprland" "gtk" "gnome" ];
   };
 
   programs.wofi = {

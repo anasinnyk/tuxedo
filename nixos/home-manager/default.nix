@@ -20,6 +20,7 @@
       bat
       btop
       zoom-us
+      blueman
       youtube-music
       slack
       _1password-gui

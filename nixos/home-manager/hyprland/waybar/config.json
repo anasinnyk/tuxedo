@@ -19,13 +19,33 @@
     "tray",
     "clock"
   ],
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "format": "<span color=\"#ebdbb2\">{icon}</span>",
+    "format": "{windows}",
     "format-icons": {
-      "focused": "",
+      "visible": "",
+      "active": "",
       "default": ""
+    },
+    "window-rewrite-default": "󰘔",
+    "window-rewrite": {
+      "title<.*(tmux|zsh).*>": "",
+      "title<.*firefox.*>": "󰈹",
+      "title<.*calendar.*>": "󰸗",
+      "title<.*mail.*>": "",
+      "title<.*password.*>": "󰟵",
+      "title<.*youtube.*>": "",
+      "title<.*zoom.*>": "",
+      "title<.*(telegram.*|\\(\\d+\\)$)>": "",
+      "title<.*slack.*>": "󰒱",
+      "title<.*signal.*>": "󰭹",
+      "title<.*discord.*>": "󰙯"
     }
   },
   "idle_inhibitor": {

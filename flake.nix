@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-software-center.url = "github:snowfallorg/nix-software-center";
      
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -34,7 +35,7 @@
 
   };
 
-  outputs = { self, nixpkgs, flatpaks, darkmatter-grub-theme, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
   in
@@ -57,7 +58,12 @@
     homeConfigurations.nas1k = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
-        flatpaks.homeManagerModules.default
+        {
+          home.packages = [
+            inputs.nix-software-center.packages.${system}.nix-software-center
+          ];
+        }
+        inputs.flatpaks.homeManagerModules.default
         ./nixos/home-manager
         ./nixos/home-manager/git
         ./nixos/home-manager/terminal
