@@ -45,6 +45,33 @@
   background: #1d2021;
 }
 
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#custom-music,
+#clock,
+#idle_inhibitor {
+  padding: 0 5px;
+}
+
+#cpu.warning,
+#memory.warning,
+#disk.warning,
+#battery.warning {
+  color: #fabd2f;
+}
+#systemd-failed-units,
+#cpu.critical,
+#memory.critical,
+#disk.critical,
+#battery.critical {
+  color: #cc241d;
+}
+
 #idle_inhibitor.activated {
   background-color: #b8bb26;
   color: #1d2021;
@@ -53,11 +80,6 @@
 #custom-music {
   color: #b8bb26;
   border-bottom: 4px solid #b8bb26;
-}
-
-#clock {
-  color: #fabd2f;
-  border-bottom: 4px solid #fabd2f;
 }
 
 #network.disconnected {

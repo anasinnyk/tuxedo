@@ -4,25 +4,50 @@
   "height": 30,
   "modules-left": [
     "hyprland/workspaces",
-    "custom/music"
+    "mpris"
   ],
   "modules-center": [
     "hyprland/window"
   ],
   "modules-right": [
     "idle_inhibitor",
-    "pulseaudio",
-    "network",
-    "cpu",
-    "memory",
-    "battery",
+    "hyprland/language",
+    "group/hardware",
+    "systemd-failed-units",
     "tray",
     "clock"
   ],
+  "battery": {
+    "format": "{icon}",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "bluetooth": {
+    "format": "",
+    "format-connected": "󰂱",
+    "on-click": "blueman-manager",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
   "pulseaudio/slider": {
     "min": 0,
     "max": 100,
     "orientation": "horizontal"
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "eng",
+    "format-uk": "укр"
   },
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -60,25 +85,73 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{:%a, %e %b at %I:%M %p}",
-    "format-alt": "{:%Y-%m-%d - %H:%M}"
+    "format": "{:%a, %d %b %I:%M %p}"
+  },
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "player-icons": {
+      "default": "▶"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    }
+  },
+  "group/hardware": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "pulseaudio",
+      "cpu",
+      "memory",
+      "disk",
+      "bettery",
+      "network",
+      "bluetooth"
+    ]
+  },
+  "disk": {
+    "format": "{percentage_free}% ",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "systemd-failed-units": {
+    "hide-on-ok": true,
+    "format": "✗ {nr_failed}",
+    "format-ok": "✓",
+    "system": true,
+    "user": true
   },
   "cpu": {
     "format": "{usage}% ",
-    "on-click": "wezterm -e btop"
+    "on-click": "wezterm -e btop",
+    "status": {
+      "warning": 60,
+      "critical": 80
+    }
   },
   "memory": {
     "interval": 30,
-    "format": "{used:0.1f}/{total:0.1f}G "
+    "format": "{percentage}% ",
+    "on-click": "wezterm -e btop",
+    "status": {
+      "warning": 60,
+      "critical": 80
+    }
   },
   "network": {
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ifname}: {ipaddr} ",
-    "format-disconnected": "Disconnected ⚠"
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "⚠"
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
     "format-muted": "",
     "format-icons": {
       "headphones": "",

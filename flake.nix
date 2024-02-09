@@ -52,6 +52,7 @@
           ./nixos/system/sddm
           inputs.darkmatter-grub-theme.nixosModule
           ./nixos/system/grub
+          ./nixos/system/yubico
         ];
       };
     };

@@ -30,6 +30,8 @@ in
     slurp
     swappy
     wlogout
+    hyprshot
+    cliphist
     wl-clipboard
     polkit_gnome
     libsForQt5.polkit-kde-agent
@@ -43,7 +45,9 @@ in
     sdbus-cpp
     wayland-protocols
     xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
     wirelesstools
     pulseaudio
     upower
@@ -54,6 +58,7 @@ in
     swaynotificationcenter
     bibata-cursors
     adw-gtk3
+    polkit_gnome
   ];
   
   gtk.enable = true;
@@ -87,7 +92,12 @@ in
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [ 
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gnome
+    ];
     config.common.default = "gnome";
     config.hyprland.default = [ "hyprland" "gtk" "gnome" ];
   };

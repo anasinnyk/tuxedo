@@ -21,6 +21,7 @@
       btop
       zoom-us
       blueman
+      networkmanagerapplet
       youtube-music
       slack
       _1password-gui

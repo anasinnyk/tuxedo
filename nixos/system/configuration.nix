@@ -19,7 +19,6 @@
 
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true;
-  services.xserver.displayManager.sddm.wayland.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
   nixpkgs.config.allowUnfree = true;
