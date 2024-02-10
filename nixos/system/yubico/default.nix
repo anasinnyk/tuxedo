@@ -26,7 +26,16 @@
       greetd.u2fAuth = true;
       sudo.u2fAuth = true;
       swaylock.u2fAuth = true;
-      sddm.u2fAuth = true;
+      sddm = {
+        u2fAuth = true;
+        text = ''
+          auth include system-local-login
+          suth require pam_u2f.so
+          account include system-login
+          password include system-login
+          session include system-login
+        '';
+      };
     };
   };
 }

@@ -24,7 +24,8 @@ in
     swww
     playerctl
     pamixer
-    swaylock
+    swaylock-effects
+    swayidle
     grimblast
     grim
     slurp
@@ -88,8 +89,10 @@ in
     gtk-application-prefer-dark-theme = true;
   };
 
-  xdg.enable = true;
+  xdg.mime.enable = true;
+  xdg.mimeApps.enable = true;
 
+  xdg.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [ 
@@ -117,8 +120,8 @@ in
     style = ./waybar/style.css;
   };
 
-  home.file.".config/waybar/mediaplayer.sh" = {
-    source = ./waybar/mediaplayer.sh;
+  home.file.".config/hypr/screenlock.sh" = {
+    source = ./screenlock.sh;
     executable = true;
   };
 
@@ -127,5 +130,10 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = (builtins.readFile ./hyprland.conf);
+  };
+
+  home.file.".config/wlogout" = {
+    source = ./wlogout;
+    recursive = true;
   };
 }

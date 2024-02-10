@@ -13,6 +13,7 @@
       firefox
       hello
       fzf
+      via
       jq
       yq-go
       ripgrep

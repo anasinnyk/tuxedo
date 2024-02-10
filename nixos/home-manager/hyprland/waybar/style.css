@@ -8,7 +8,7 @@
 
 #workspaces,
 #clock,
-#custom-music,
+#custom-power,
 #window {
   font-weight: 800;
   background: #1d2021;
@@ -52,10 +52,13 @@
 #pulseaudio,
 #tray,
 #mode,
-#custom-music,
+#custom-power,
 #clock,
+#mpris,
+#language,
+.drawer-child,
 #idle_inhibitor {
-  padding: 0 5px;
+  padding: 0 10px;
 }
 
 #cpu.warning,
@@ -77,9 +80,8 @@
   color: #1d2021;
 }
 
-#custom-music {
-  color: #b8bb26;
-  border-bottom: 4px solid #b8bb26;
+#custom-power {
+  color: #cc241d;
 }
 
 #network.disconnected {
