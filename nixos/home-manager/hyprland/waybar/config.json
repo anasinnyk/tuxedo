@@ -2,8 +2,13 @@
   "layer": "top",
   "position": "top",
   "height": 30,
-  "modules-left": ["hyprland/workspaces", "mpris"],
-  "modules-center": ["hyprland/window"],
+  "modules-left": [
+    "hyprland/workspaces",
+    "mpris"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
   "modules-right": [
     "idle_inhibitor",
     "hyprland/language",
@@ -19,7 +24,13 @@
       "warning": 20,
       "critical": 10
     },
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "bluetooth": {
     "format": "",
@@ -51,7 +62,7 @@
     "window-rewrite-default": "󰘔",
     "window-rewrite": {
       "title<.*(tmux|zsh).*>": "",
-      "title<.*Firefox$>": "󰈹",
+      "title<.*firefox.*>": "󰈹",
       "title<.*calendar.*>": "󰸗",
       "title<.*mail.*>": "",
       "title<.*password.*>": "󰟵",
@@ -93,7 +104,13 @@
       "transition-duration": 500,
       "transition-left-to-right": false
     },
-    "modules": ["pulseaudio", "cpu", "memory", "disk", "bettery"]
+    "modules": [
+      "pulseaudio",
+      "cpu",
+      "memory",
+      "disk",
+      "bettery"
+    ]
   },
   "disk": {
     "format": "{percentage_free}% ",
@@ -142,13 +159,17 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", ""]
+      "default": [
+        "",
+        ""
+      ]
     },
     "on-click": "pavucontrol"
   },
   "custom/power": {
-    "format": "󰐥",
-    "exec": "wlogout",
-    "exec-on-event": "on-click"
+    "format": "{icon}",
+    "format-icons": "󰐥",
+    "on-click": "wlogout",
+    "exec-on-event": true
   }
 }

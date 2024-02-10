@@ -48,10 +48,7 @@
           ./nixos/system/hardware-configuration.nix
           ./nixos/system/configuration.nix
           ./nixos/system/users/nas1k.nix
-          inputs.sddm-sugar-candy-nix.nixosModules.default
-          ./nixos/system/sddm
-          inputs.darkmatter-grub-theme.nixosModule
-          ./nixos/system/grub
+          ./nixos/system/gdm
           ./nixos/system/yubico
         ];
       };
