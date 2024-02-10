@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
   services.xserver.displayManager = {
     defaultSession = "hyprland";

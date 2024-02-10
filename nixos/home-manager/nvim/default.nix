@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     go
-    gcc_multi
+    # gcc_multi
     zig
     rustc
     cargo

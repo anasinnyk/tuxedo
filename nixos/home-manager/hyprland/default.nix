@@ -131,9 +131,4 @@ in
     enable = true;
     extraConfig = (builtins.readFile ./hyprland.conf);
   };
-
-  home.file.".config/wlogout" = {
-    source = ./wlogout;
-    recursive = true;
-  };
 }
