@@ -26,6 +26,7 @@
       networkmanagerapplet
       youtube-music
       slack
+      gnome.file-roller
       _1password-gui
       _1password
       unzip

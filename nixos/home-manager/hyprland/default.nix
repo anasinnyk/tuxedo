@@ -54,6 +54,7 @@ in
     upower
     brillo
     watchexec
+    brightnessctl
     pavucontrol
     mako
     swaynotificationcenter

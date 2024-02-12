@@ -20,7 +20,7 @@
     u2f = {
       enable = true;
       cue = true;
-      control = "sufficient";
+      control = "required";
     };
     services = {
       greetd.u2fAuth = true;
