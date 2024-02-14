@@ -61,7 +61,6 @@ in
     sdbus-cpp
     wayland-protocols
     xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
     wirelesstools
@@ -120,10 +119,10 @@ in
       pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gnome
     ];
-    config.common.default = "gnome";
-    config.hyprland.default = [ "hyprland" "gtk" "gnome" ];
+    config.common.default = "gtk";
+    config.hyprland.default = [ "gtk" "hyprland" ];
+    config.preferred.default = "gtk,hyprland";
   };
 
   programs.wofi = {

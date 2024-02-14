@@ -11,6 +11,9 @@
     userEmail = "anasinnyk@pm.me";
     extraConfig = {
       init = { defaultBranch = "main"; };
+      url = {
+        "git@github.com:" = { insteadOf = "https://github.com/"; };
+      };
     };
     aliases = {
       huyak = "git add . && git commit --amend --no-edit && git push -f";

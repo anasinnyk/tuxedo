@@ -1,12 +1,40 @@
 { pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
+    lynx
+    mutt-wizard
+    vifm
+    notmuch
+    abook
+    urlscan
     wezterm
     starship
     nushell
     zsh
     tmux
     kitty
+    busybox
+    fzf
+    disfetch
+    lolcat
+    cowsay
+    onefetch
+    gnugrep
+    gnused
+    gnumake
+    bottom
+    fd
+    bc
+    jq
+    yq-go
+    ripgrep
+    eza
+    bat
+    btop
+    httpie
+    whois
+    unzip
+    neofetch
   ];
 
   home.sessionVariables = {
@@ -15,6 +43,12 @@
 
   programs.zsh = {
     enable = true;
+    shellAliases = {
+      "ls" = "eza --icons -l -T -L=1";
+      "cat" = "bat";
+      "top" = "btop";
+      "grep" = "rg";
+    };
     "oh-my-zsh" = {
       enable = true;
       plugins = [
