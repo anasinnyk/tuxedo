@@ -1,6 +1,18 @@
 { pkgs, ... }:
 let
   gruvbox = import ./pkgs/gruvbox-plus.nix { inherit pkgs; };
+  flameshot = pkgs.flameshot.overrideAttrs (old: {
+    version = "next";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "flameshot-org";
+      repo = "flameshot";
+      rev = "master";
+      sha256 = "sha256-OLRtF/yjHDN+sIbgilBZ6sBZ3FO6K533kFC1L2peugc=";
+    };
+
+    NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_GRIM=ON";
+  });
 in
 {
   fonts.fontconfig.enable = true;
@@ -34,9 +46,12 @@ in
     hyprshot
     cliphist
     wl-clipboard
+    wl-clip-persist
     polkit_gnome
     libsForQt5.polkit-kde-agent
     libsForQt5.qt5.qtwayland
+    libsForQt5.qt5.qtquickcontrols2   
+    libsForQt5.qt5.qtgraphicaleffects
     qt6.qtwayland
     hyprland-protocols
     hyprland
@@ -60,34 +75,39 @@ in
     swaynotificationcenter
     bibata-cursors
     adw-gtk3
+    gnome.adwaita-icon-theme
     polkit_gnome
   ];
-  
+
+  services.flameshot = {
+    enable = true;
+    package = flameshot;
+  };
+
+  qt.enable = true;
+  qt.platformTheme = "gtk";
+  qt.style.name = "adwaita-dark";
+  qt.style.package = pkgs.adwaita-qt;
+
   gtk.enable = true;
   gtk.cursorTheme.package = pkgs.bibata-cursors;
-  home.file = {
-    ".icons/bibata".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
-  };
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
-  # gtk.theme.package = pkgs.adw-gtk3;
-  home.sessionVariables = {
-    GTK_THEME = "Adwaita:dark";
-  };
-  gtk.theme.name = "Adwaita:dark";
-  home.file.".local/share/icons" = {
-    source = gruvbox;
-    recursive = true;
-  };
-  home.file.".config/gtk-3.0/gtk.css".source = ./pkgs/gtk-3.0/gtk.css;
-  home.file.".config/gtk-3.0/gtk-dark.css".source = ./pkgs/gtk-3.0/gtk-dark.css;
-  home.file.".config/gtk-4.0/gtk.css".source = ./pkgs/gtk-4.0/gtk.css;
-  home.file.".config/gtk-4.0/gtk-dark.css".source = ./pkgs/gtk-4.0/gtk-dark.css;
+  home.file.".local/share/icons/Bibata-Modern-Ice".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice";
   gtk.iconTheme.name = "Gruvbox-Plus-Dark";
+  home.file.".local/share/icons/Gruvbox-Plus-Dark".source = "${gruvbox}/Gruvbox-Plus-Dark";
+  gtk.theme.package = pkgs.adw-gtk3;
+  gtk.theme.name = "adw-gtk3";
   gtk.gtk3.extraConfig = {
     gtk-application-prefer-dark-theme = true;
   };
   gtk.gtk4.extraConfig = {
     gtk-application-prefer-dark-theme = true;
+  };
+  home.sessionVariables.GTK_THEME = "adw-gtk3";
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
   };
 
   xdg.mime.enable = true;
