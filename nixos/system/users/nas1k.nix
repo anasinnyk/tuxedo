@@ -2,6 +2,9 @@
 {
   programs.zsh.enable = true;
   security.polkit.enable = true;
+  services.udev.packages = [
+    pkgs.via
+  ];
   programs._1password-gui.polkitPolicyOwners = [ "nas1k" ];
   users.users.nas1k = {
     isNormalUser = true;

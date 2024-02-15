@@ -1,23 +1,14 @@
 { pkgs, ... }:
 let
   gruvbox = import ./pkgs/gruvbox-plus.nix { inherit pkgs; };
-  flameshot = pkgs.flameshot.overrideAttrs (old: {
-    version = "next";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "flameshot-org";
-      repo = "flameshot";
-      rev = "master";
-      sha256 = "sha256-OLRtF/yjHDN+sIbgilBZ6sBZ3FO6K533kFC1L2peugc=";
-    };
-
-    NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_GRIM=ON";
-  });
+  flameshot = pkgs.libsForQt5.callPackage ./flameshot { };
 in
 {
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    qmk
+    via
     inconsolata-nerdfont
     jetbrains-mono
     nerdfonts

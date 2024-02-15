@@ -11,6 +11,7 @@
     home.packages = with pkgs; [
       sioyek
       firefox
+      google-chrome
       zoom-us
       blueman
       networkmanagerapplet
