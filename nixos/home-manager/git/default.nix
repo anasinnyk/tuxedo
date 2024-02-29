@@ -8,11 +8,17 @@
   programs.git = {
     enable = true;
     userName = "Andrii Nasinnyk";
-    userEmail = "anasinnyk@pm.me";
+    userEmail = "23741265+anasinnyk@users.noreply.github.com";
     extraConfig = {
+      user = {
+        signingkey = "30797BEB87E6908E";
+      };
       init = { defaultBranch = "main"; };
       url = {
         "git@github.com:" = { insteadOf = "https://github.com/"; };
+      };
+      commit = {
+        gpgSign = true;
       };
     };
     aliases = {

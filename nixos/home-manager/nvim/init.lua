@@ -36,6 +36,8 @@ return {
     { import = "astrocommunity.pack.terraform" },
     { import = "astrocommunity.pack.markdown" },
     { import = "astrocommunity.motion.nvim-surround" },
+    { import = "astrocommunity.motion.mini-surround" },
+    { import = "astrocommunity.lsp.inc-rename-nvim" },
     { import = "astrocommunity.debugging.nvim-bqf" },
     { import = "astrocommunity.diagnostics.trouble-nvim" },
     { import = "astrocommunity.completion.copilot-lua" },

@@ -10,7 +10,7 @@
 #custom-power,
 #window {
   font-weight: 800;
-  background: #1d2021;
+  /* background: #1d2021; */
 }
 
 /* Workspace Buttons */
@@ -41,7 +41,7 @@
 #tray,
 #mode,
 #idle_inhibitor {
-  background: #1d2021;
+  /* background: #1d2021; */
 }
 
 #battery,

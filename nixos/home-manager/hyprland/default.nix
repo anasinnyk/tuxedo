@@ -1,6 +1,5 @@
 { pkgs, ... }:
 let
-  gruvbox = import ./pkgs/gruvbox-plus.nix { inherit pkgs; };
   flameshot = pkgs.libsForQt5.callPackage ./flameshot { };
 in
 {
@@ -17,8 +16,11 @@ in
     noto-fonts-cjk
     noto-fonts-emoji
     liberation_ttf
+    librsvg
     fira-code
     fira-code-symbols
+    dmenu
+    selectdefaultapplication
     mplus-outline-fonts.githubRelease
     dina-font
     dunst
@@ -43,7 +45,6 @@ in
     libsForQt5.qt5.qtwayland
     libsForQt5.qt5.qtquickcontrols2   
     libsForQt5.qt5.qtgraphicaleffects
-    qt6.qtwayland
     hyprland-protocols
     hyprland
     libdrm
@@ -61,13 +62,14 @@ in
     watchexec
     brightnessctl
     pavucontrol
-    mako
-    swaynotificationcenter
     bibata-cursors
-    adw-gtk3
-    gnome.adwaita-icon-theme
+    gnome.gnome-tweaks
     polkit_gnome
+    killall
   ];
+
+  services.blueman-applet.enable = true;
+  services.mpris-proxy.enable = true;
 
   services.flameshot = {
     enable = true;
@@ -80,28 +82,30 @@ in
   qt.style.package = pkgs.adwaita-qt;
 
   gtk.enable = true;
+  gtk.theme.package = pkgs.adw-gtk3;
+  gtk.theme.name = "Adwaita-dark";
   gtk.cursorTheme.package = pkgs.bibata-cursors;
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
-  home.file.".local/share/icons/Bibata-Modern-Ice".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice";
   gtk.iconTheme.name = "Gruvbox-Plus-Dark";
-  home.file.".local/share/icons/Gruvbox-Plus-Dark".source = "${gruvbox}/Gruvbox-Plus-Dark";
-  gtk.theme.package = pkgs.adw-gtk3;
-  gtk.theme.name = "adw-gtk3";
-  gtk.gtk3.extraConfig = {
-    gtk-application-prefer-dark-theme = true;
+  gtk.iconTheme.package = pkgs.gruvbox-plus-icons;
+  home.file.".config/gtk-4.0" = {
+    source = "${pkgs.adw-gtk3}/share/themes/adw-gtk3-dark/gtk-4.0";
+    recursive = true;
   };
-  gtk.gtk4.extraConfig = {
-    gtk-application-prefer-dark-theme = true;
+  home.file.".config/gtk-3.0" = {
+    source = "${pkgs.adw-gtk3}/share/themes/adw-gtk3-dark/gtk-3.0";
+    recursive = true;
   };
-  home.sessionVariables.GTK_THEME = "adw-gtk3";
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
+  home.sessionVariables = {
+    GTK_THEME = "Adwaita-dark";
   };
 
-  xdg.mime.enable = true;
-  xdg.mimeApps.enable = true;
+  xdg = {
+    mime.enable = true;
+    mimeApps = {
+      enable = true;
+    };
+  };
 
   xdg.enable = true;
   xdg.portal = {
@@ -131,15 +135,17 @@ in
     style = ./waybar/style.css;
   };
 
-  home.file.".config/hypr/screenlock.sh" = {
-    source = ./screenlock.sh;
-    executable = true;
-  };
-
   home.file.".config/wallpaper.jpg".source = ./wallpaper.jpg;
 
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = (builtins.readFile ./hyprland.conf);
+  };
+
+  home.file.".config/dunst/dunstrc".source = ./dunst/dunstrc;
+
+  home.file.".config/swaylock/config".source = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/CelticBoozer/dotfiles/master/.config/swaylock/config";
+    sha256 = "sha256-jf0gaTdM4d0QWpL9X1asAcW7c7PZI02tDXtFEfgCuEw=";
   };
 }

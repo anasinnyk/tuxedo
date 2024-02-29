@@ -1,0 +1,90 @@
+set realname = "Andrii Nasinnyk"
+# set pgp_default_key = "78D6B043EE8A23A3E55F32CA30797BEB87E6908E"
+macro index gd "<change-folder>$postponed<enter>" "go to drafts"
+macro index gs "<change-folder>$record<enter>" "go to sent"
+macro index gi "<change-folder>$spoolfile<enter>" "go to inbox"
+macro index gt "<change-folder>$trash<enter>" "go to trash"
+macro index,pager A "<save-message> =Archive<enter>" "archive message"
+macro index 1 "<change-folder> =../Mail/inbox/<enter>"
+
+bind pager <down> next-line
+bind pager <up> previous-line
+
+unset markers
+
+set delete = no
+set move = no
+set help = no
+set sleep_time = 0
+set sort = reverse-thread
+set status_format = "%f"
+set date_format = "%m%d"
+set index_format = "%Z %D %-15.15n %s"
+set alias_file = ~/.config/mutt/alias
+
+# source "gpg -dq ~/.config/mutt/protonmail.gpg |"
+ignore *
+unignore From Message-Id Date To Cc Bcc Subject
+set pager_stop
+alternative_order multipart/mixed multipart/related text/plain text/html
+
+mime_lookup application/octet-stream
+set mime_type_query_command="xdg-mime query filetype"
+set sendmail="msmtp"
+set indent_string = ">"
+set reflow_wrap = 80
+set reflow_text
+unset reflow_space_quotes
+unset imap_passive
+set imap_check_subscribed
+set mail_check = 15
+set timeout = 15
+set sidebar_visible = no
+set sidebar_width = 30
+color sidebar_new brightred default
+macro index b "<enter-command>toggle sidebar_visible<enter>"
+macro pager b "<enter-command>toggle sidebar_visible<enter>"
+unset ssl_use_sslv3
+unset ssl_use_tlsv1
+set ssl_verify_host
+set ssl_verify_dates
+set to_chars = " +TCF"
+push <show-version>
+auto_view text/html
+# set abort_subject = yes
+set copy = no
+# set pgp_sign_as = "Andrii Nasinnyk"
+# set pgp_use_gpg_agent
+# set pgp_timeout = 1800
+set crypt_autosign
+set crypt_replysign
+set crypt_replysignencrypted
+set check_new
+set editor = "nvim"
+set mh_purge
+unset confirmappend
+unset confirmcreate
+set keep_flagged
+set save_address
+set save_name
+set mark_old
+set smart_wrap
+set signature = ~/.config/mutt/signature
+set edit_hdrs
+
+source ~/.config/mutt/protonmail
+
+set folder = "imap://localhost:1143"
+set spoolfile = "imap://localhost:1143/INBOX"
+set postponed = "imap://localhost:1143/[Protonmail]/Drafts"
+set mbox = "imap://localhost:1143/[Protonmail]/All Mail"
+set header_cache = "~/.config/mutt/cache/headers"
+set message_cachedir = "~/.config/mutt/cache/bodies"
+set certificate_file = "~/.config/mutt/certificates"
+set smtp_authenticators = "gssapi:login"
+set imap_keepalive = 900
+set use_from = yes
+unset use_domain
+set starttls = yes
+set ssl_force_tls = yes
+set send_charset = "us-ascii:utf-8"

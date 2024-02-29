@@ -1,9 +1,28 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 {
   home.packages = with pkgs; [
-    lynx
+    elinks
+    chafa
+    exiftool
+    atool
+    ctpv
+    fontforge
+    ffmpeg
+    highlight
+    mdcat
+    delta
+    lf
+    mutt
     mutt-wizard
-    vifm
+    ueberzugpp
+    shared-mime-info
+    msmtp
+    lsix
+    libnotify
+    poppler_utils
+    imagemagick
+    ffmpegthumbnailer
+    fontpreview
     notmuch
     abook
     urlscan
@@ -13,7 +32,6 @@
     zsh
     tmux
     kitty
-    busybox
     fzf
     disfetch
     lolcat
@@ -152,5 +170,62 @@
         disabled = true;
       };
     };
+  };
+
+  home.file.".config/mutt" = {
+    source = ./mutt;
+    recursive = true;
+  };
+
+  sops = {
+    secrets = {
+      "imap/password" = {
+        sopsFile = ./mutt/proton.sops.yaml;
+      };
+      email = {
+        sopsFile = ./mutt/proton.sops.yaml;
+      };
+    };
+  };
+  
+  home.file.".config/mutt/protonmail" = {
+    text = ''
+      set imap_pass = "$(cat ${config.sops.secrets."imap/password".path})"
+      set imap_user = "$(cat ${config.sops.secrets.email.path})"
+      set from = "$(cat ${config.sops.secrets.email.path})"
+      set smtp_url = "smtp://$(cat ${config.sops.secrets.email.path}):$(cat ${config.sops.secrets."imap/password".path})@localhost:1025"
+    '';
+  };
+
+  programs.lf = {
+    enable = true;
+    settings = {
+      sixel = true;
+    };
+    keybindings = {
+      U = "!du -sh";
+      gh = "cd ~";
+      i = "$less $f";
+    };
+
+    previewer.source = pkgs.writeShellScript "pv.sh" ''
+      #!/bin/sh
+
+      case "$(${pkgs.file}/bin/file -Lb --mime-type -- "$1")" in
+          image/*)
+              ${pkgs.chafa}/bin/chafa -f sixel -s "$2x$3" --animate false "$1"
+              exit 1
+              ;;
+      esac
+
+      case "$1" in
+          *.tar*) tar tf "$1";;
+          *.zip) unzip -l "$1";;
+          *.rar) unrar l "$1";;
+          *.7z) 7z l "$1";;
+          *.pdf) pdftotext "$1" -;;
+          *) highlight -O ansi "$1" || cat "$1";;
+      esac
+    '';
   };
 }

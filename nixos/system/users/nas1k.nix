@@ -1,7 +1,21 @@
 { pkgs, ... }:
 {
   programs.zsh.enable = true;
-  security.polkit.enable = true;
+  services.blueman.enable = true;
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if ((action.id == "org.blueman.network.setup" ||
+            action.id == "org.blueman.dhcp.client" ||
+            action.id == "org.blueman.rfkill.setstate" ||
+            action.id == "org.blueman.pppd.pppconnect") &&
+            subject.isInGroup("wheel")) {
+          return polkit.Result.YES;
+        }
+      });
+    '';
+  };
   services.udev.packages = [
     pkgs.via
   ];

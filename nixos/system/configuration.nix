@@ -49,10 +49,14 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.pcscd.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
     vim
+    age
+    sops
+    age-plugin-yubikey
     home-manager
   ];
 
