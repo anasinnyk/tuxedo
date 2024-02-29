@@ -11,7 +11,7 @@
     userEmail = "23741265+anasinnyk@users.noreply.github.com";
     extraConfig = {
       user = {
-        signingkey = "30797BEB87E6908E";
+        signingkey = "A0B5BF87A3701CC5";
       };
       init = { defaultBranch = "main"; };
       url = {

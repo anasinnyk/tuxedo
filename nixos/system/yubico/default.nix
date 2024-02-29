@@ -7,6 +7,7 @@
     yubikey-manager
     yubioath-flutter
     pamtester
+    yubikey-personalization
   ];
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
